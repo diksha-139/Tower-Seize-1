@@ -27,6 +27,7 @@ function setup(){
     ground= new Ground(600,390,1200,10);
     stand1= new Ground(400,300,200,10);
     stand2= new Ground(900,200,200,10);
+// first pyramid 
 
 box1= new Box(330,235,30,40,'pink')
 box2= new Box(360,235,30,40,'pink')
@@ -41,7 +42,7 @@ box8= new Box(420,195,30,40,'skyblue')
 box9= new Box(390,155,30,40,'lime')
 
 
-
+//second pyramid
 box10= new Box(830,135,30,40,'pink')
 box11= new Box(860,135,30,40,'pink')
 box12= new Box(890,135,30,40,'pink')
@@ -53,11 +54,11 @@ box16= new Box(890,95,30,40,'skyblue')
 box17= new Box(920,95,30,40,'skyblue')
 
 box18= new Box(890,55,30,40,'lime')
-
-polygon1 = Bodies.circle(50,200,20);
+// creating polygon
+polygon1 = Bodies.circle(112,200,20,{'density':5});
     World.add(world,polygon1);
 
-sling1 = new Slingshot(polygon1.body,{x:50,y:200});
+sling1 = new Slingshot(polygon1,{x:110,y:200});
 
 }
 
@@ -67,6 +68,7 @@ function draw(){
     textSize(20);
     fill("lime");
     text("Drag the Hexagonal Stone and Release it, to launch it towards the blocks",100,30)
+    text(mouseX+","+mouseY,mouseX,mouseY)
     ground.display();
     stand1.display();
     stand2.display();
@@ -97,7 +99,7 @@ function draw(){
 }
 
 function mouseDragged(){
-     Matter.Body.setPosition(polygon1.body, {x: mouseX , y: mouseY});
+     Matter.Body.setPosition(polygon1, {x: mouseX , y: mouseY});
 }
 
 
@@ -107,7 +109,7 @@ function mouseReleased(){
 
 function keyPressed(){
     if(keyCode === 32){
-        Matter.Body.setPosition(polygon1.body,{x:100,y:200});
-        sling1.attach(polygon1.body);
+        Matter.Body.setPosition(polygon1,{x:110,y:200});
+        sling1.attach(polygon1);
     }
     }
